@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CoFound - Find Your Co-Founder</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#15121b",
+                    "on-surface-variant": "#cbc3d7",
+                    "secondary": "#c4c6cf",
+                    "primary": "#d0bcff",
+                    "on-secondary-fixed": "#191c22",
+                    "on-primary-container": "#340080",
+                    "on-primary": "#3c0091",
+                    "primary-fixed": "#e9ddff",
+                    "surface-tint": "#d0bcff",
+                    "secondary-container": "#464950",
+                    "secondary-fixed-dim": "#c4c6cf",
+                    "tertiary-fixed": "#ffdcbb",
+                    "on-primary-fixed-variant": "#5516be",
+                    "on-error": "#690005",
+                    "error": "#ffb4ab",
+                    "on-tertiary-container": "#3f2300",
+                    "background": "#0B0E14",
+                    "tertiary-container": "#ca801e",
+                    "surface-dim": "#15121b",
+                    "surface-bright": "#3b3742",
+                    "on-secondary": "#2e3037",
+                    "primary-fixed-dim": "#d0bcff",
+                    "outline-variant": "#494454",
+                    "surface-container-lowest": "#0f0d15",
+                    "primary-container": "#a078ff",
+                    "inverse-primary": "#6d3bd7",
+                    "on-tertiary": "#482900",
+                    "on-error-container": "#ffdad6",
+                    "error-container": "#93000a",
+                    "secondary-fixed": "#e1e2eb",
+                    "on-secondary-container": "#b6b8c1",
+                    "on-primary-fixed": "#23005c",
+                    "on-tertiary-fixed": "#2c1700",
+                    "outline": "#958ea0",
+                    "surface-container-low": "#1d1a23",
+                    "tertiary": "#ffb869",
+                    "on-surface": "#e7e0ed",
+                    "on-tertiary-fixed-variant": "#673d00",
+                    "inverse-on-surface": "#322f39",
+                    "surface-container-high": "#2c2832",
+                    "tertiary-fixed-dim": "#ffb869",
+                    "inverse-surface": "#e7e0ed",
+                    "on-background": "#e7e0ed",
+                    "surface-container-highest": "#37333d",
+                    "surface-variant": "#37333d",
+                    "surface-container": "#211e27",
+                    "on-secondary-fixed-variant": "#44474e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "sm": "0.5rem",
+                    "xl": "2.5rem",
+                    "md": "1rem",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "xs": "0.25rem",
+                    "lg": "1.5rem",
+                    "base": "4px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Geist"],
+                    "code": ["Geist Mono"],
+                    "body-md": ["Geist"],
+                    "body-lg": ["Geist"],
+                    "headline-lg-mobile": ["Geist"],
+                    "label-md": ["Geist"],
+                    "headline-md": ["Geist"],
+                    "display-lg": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "code": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0B0E14;
+            color: #e7e0ed;
+        }
+        .glass-panel {
+            background: rgba(21, 18, 27, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(208, 188, 255, 0.1);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 30px rgba(208, 188, 255, 0.1);
+            border-color: rgba(208, 188, 255, 0.3);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #d0bcff, #ffb869);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-primary-secondary {
+            background: linear-gradient(135deg, #a078ff, #6d3bd7);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container" data-mode="connect">
+<!-- TopNavBar -->
+<nav class="bg-background/80 backdrop-blur-xl full-width top-0 sticky border-b border-outline-variant/30 shadow-sm z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-2">
+<a class="text-headline-md font-bold text-primary" href="/">CoFound</a>
+</div>
+<div class="hidden md:flex items-center gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-sm hover:bg-primary/10 transition-all rounded px-3 py-1" href="/explore">Explore</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-sm hover:bg-primary/10 transition-all rounded px-3 py-1" href="/ideas">Ideas</a>
+</div>
+<div class="flex items-center gap-4">
+<!-- Logic would be implemented in React component:
+     { !isAuthenticated ? (
+       <>
+         <button onClick={() => navigate('/login')} ...>Login</button>
+         <button onClick={() => navigate('/register')} ...>Register</button>
+       </>
+     ) : (
+       <button onClick={handleLogout} ...>Logout</button>
+     )}
+-->
+<button class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-sm hover:bg-primary/10 transition-all rounded px-3 py-1 scale-95 duration-150 ease-in-out">Login</button>
+<button class="bg-primary-container text-on-primary-container font-label-md text-sm px-4 py-2 rounded-lg hover:bg-inverse-primary transition-colors scale-95 duration-150 ease-in-out">Register</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-sm hover:bg-primary/10 transition-all rounded px-3 py-1 scale-95 duration-150 ease-in-out flex items-center gap-2" id="logout-button">
+<span class="material-symbols-outlined text-lg">logout</span>
+  Logout
+</button></div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[85vh] flex items-center justify-center py-20 px-margin-mobile md:px-margin-desktop overflow-hidden">
+<div class="absolute inset-0 z-0"><img alt="Founders collaborating" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgsokPnK3Zia4o-RJM8XHYVVD8orgOa4qaxbnGLYTOuskiTDEvAzt1RNNWta1e40puLaL6OQdPxHI4I8uw8iMl6hIpcr4LuZVVM-b0hwzsAeZ_DKM02fmII1cpbymHNHkicoLk_7-hrbK-C7rQL9hNyvOU7e7t6C2TTY1-g78TY7rlSy6ZJlOEUk4YFZLFMfu1yAS-QYftefWg3z2ZiD6QRGY4Q5QmpGyTuXH5do7LQYPgXOo3oowSV9mNBrhRbNlQQJKtQS-oLIY"/><div class="absolute inset-0 bg-surface/60 backdrop-blur-sm"></div><div class="absolute inset-0 bg-gradient-to-b from-transparent via-surface/40 to-background"></div></div>
+<div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center gap-8 reveal" style="opacity: 1; transform: translateY(0px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);">
+<span class="px-4 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary font-label-md text-xs inline-block backdrop-blur-sm">The Premium Network for Founders</span>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight leading-[1.1] text-7xl">
+                    Find Your Co-Founder.<br/>
+<span class="text-gradient">Build What Matters.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Connect with ambitious builders, engineers, and visionaries. Stop searching blindly and start building with the right partner.
+                </p>
+<div class="flex flex-col sm:flex-row gap-6 mt-4 w-full sm:w-auto">
+<button class="bg-gradient-primary-secondary text-white font-label-md px-10 py-4 rounded-xl hover:shadow-[0_0_25px_rgba(160,120,255,0.3)] transition-all flex items-center justify-center gap-2 font-semibold text-lg">
+                        Explore Co-Founders
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+<button class="glass-panel text-on-surface font-label-md px-10 py-4 rounded-xl hover:bg-surface-bright/20 transition-all glow-hover font-semibold text-lg">
+                        Post Your Idea
+                    </button>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-20 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-y border-outline-variant/20">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center reveal" style="opacity: 1; transform: translateY(0px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);">
+<div class="p-8">
+<h3 class="font-display-lg text-display-lg text-primary text-7xl">500+</h3>
+<p class="font-label-md text-on-surface-variant uppercase tracking-wider mt-2">Startups Matched</p>
+</div>
+<div class="p-8 border-y md:border-y-0 md:border-x border-outline-variant/20">
+<h3 class="font-display-lg text-display-lg text-secondary text-7xl">1200+</h3>
+<p class="font-label-md text-on-surface-variant uppercase tracking-wider mt-2">Active Founders</p>
+</div>
+<div class="p-8">
+<h3 class="font-display-lg text-display-lg text-tertiary text-7xl">48</h3>
+<p class="font-label-md text-on-surface-variant uppercase tracking-wider mt-2">Countries</p>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-16 reveal" style="opacity: 1; transform: translateY(0px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);">
+<h2 class="font-headline-lg text-on-surface text-5xl">Designed for High-Impact Collaboration</h2>
+<p class="font-body-md text-on-surface-variant mt-3 text-lg">Everything you need to find the perfect match.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal" style="opacity: 1; transform: translateY(0px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);">
+<!-- Card 1 -->
+<div class="glass-panel p-8 rounded-xl glow-hover transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-primary/15 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-[28px]">troubleshoot</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-3 text-3xl">Precision Matching</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed text-lg">Our algorithm aligns complementary skills, visionary goals, and working styles to ensure a perfect technical and cultural fit.</p>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel p-8 rounded-xl glow-hover transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-secondary/15 flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined text-[28px]">verified</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-3 text-3xl">Vetted Profiles</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed text-lg">Every profile goes through a verification process. Connect with serious builders who have a track record of execution.</p>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel p-8 rounded-xl glow-hover transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-tertiary/15 flex items-center justify-center text-tertiary mb-6">
+<span class="material-symbols-outlined text-[28px]">handshake</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-3 text-3xl">Secure Introductions</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed text-lg">Initiate conversations through our secure platform. Keep your personal details private until you're ready to take the next step.</p>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-16 reveal" style="opacity: 1; transform: translateY(0px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);">
+<h2 class="font-headline-lg text-on-surface text-5xl">How It Works</h2>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-center gap-12 relative reveal" style="opacity: 1; transform: translateY(0px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);">
+<!-- Line connector -->
+<div class="hidden md:block absolute top-1/2 left-[10%] right-[10%] h-[1px] bg-outline-variant/30 -z-10"></div>
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center w-full md:w-1/3 z-10">
+<div class="w-16 h-16 rounded-full bg-surface-container border border-outline-variant/30 flex items-center justify-center text-on-surface font-headline-md mb-6 shadow-xl backdrop-blur-md">1</div>
+<h3 class="font-headline-md text-on-surface mb-2 text-2xl">Sign Up</h3>
+<p class="font-body-md text-on-surface-variant text-lg">Create your account in seconds.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center w-full md:w-1/3 z-10">
+<div class="w-16 h-16 rounded-full bg-surface-container border border-outline-variant/30 flex items-center justify-center text-on-surface font-headline-md mb-6 shadow-xl backdrop-blur-md">2</div>
+<h3 class="font-headline-md text-on-surface mb-2 text-2xl">Build Profile</h3>
+<p class="font-body-md text-on-surface-variant text-lg">Highlight your skills and vision.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center w-full md:w-1/3 z-10">
+<div class="w-16 h-16 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-primary font-headline-md mb-6 shadow-[0_0_30px_rgba(208,188,255,0.2)] backdrop-blur-md">3</div>
+<h3 class="font-headline-md text-primary mb-2 text-2xl">Match &amp; Connect</h3>
+<p class="font-body-md text-on-surface-variant text-lg">Find your ideal co-founder.</p>
+</div>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-20 reveal" style="opacity: 1; transform: translateY(0px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);">
+<div class="glass-panel p-16 rounded-3xl text-center relative overflow-hidden border border-primary/25">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-tertiary/5 pointer-events-none"></div>
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent pointer-events-none"></div>
+<h2 class="font-headline-lg text-on-surface relative z-10 mb-8 text-5xl">Ready to find your perfect co-founder?</h2>
+<button class="relative z-10 bg-gradient-primary-secondary text-white font-label-md px-12 py-4 rounded-xl hover:shadow-[0_0_25px_rgba(160,120,255,0.4)] transition-all font-semibold text-lg">
+                    Get Started Now
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background border-t border-outline-variant/20 full-width">
+<div class="flex flex-col md:flex-row justify-between items-center w-full py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-8 md:mb-0">
+<span class="text-headline-md font-bold text-primary">CoFound</span>
+<p class="font-body-md text-on-surface-variant mt-2">© 2024 CoFound. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="/about">About</a>
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="/explore">Explore</a>
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="/post">Post Idea</a>
+<a class="font-label-md text-on-surface-variant hover:text-secondary transition-colors" href="/contact">Contact</a>
+</div>
+</div>
+</footer>
+<!-- In a real React application, this would be part of a component -->
+<script type="text/javascript">
+  /* 
+    The following script demonstrates the requested logic integration. 
+    In the final React build, this would look like:
+
+    import { useAuth } from './AuthContext';
+    import { useNavigate } from 'react-router-dom';
+
+    const Navbar = () => {
+      const { logout, isAuthenticated } = useAuth();
+      const navigate = useNavigate();
+
+      const handleLogout = async () => {
+        await logout();
+        navigate('/login');
+      };
+
+      // ... return JSX with conditional rendering for Logout/Login buttons
+    }
+  */
+
+  document.addEventListener('DOMContentLoaded', () => {
+      // Intersection Observer for scroll animations
+      const reveals = document.querySelectorAll('.reveal');
+      
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'translateY(0)';
+                  entry.target.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                  observer.unobserve(entry.target);
+              }
+          });
+      }, {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px"
+      });
+
+      reveals.forEach(el => revealObserver.observe(el));
+
+      // Logout handler mock implementation for demonstration
+      const logoutBtn = document.getElementById('logout-button');
+      if (logoutBtn) {
+          logoutBtn.addEventListener('click', async (e) => {
+              e.preventDefault();
+              
+              console.log('Integrating with useAuth().logout()...');
+              // const { logout } = useAuth();
+              // await logout();
+              
+              console.log('Redirecting to /login using useNavigate()...');
+              // const navigate = useNavigate();
+              // navigate('/login');
+              
+              // Standard web redirect for this static mockup
+              window.location.href = '/login';
+          });
+      }
+  });
+</script>
+</body></html>
