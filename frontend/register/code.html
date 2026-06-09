@@ -1,0 +1,279 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Register - CoFound</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/geist" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "surface": "#15121b",
+                "on-surface-variant": "#cbc3d7",
+                "secondary": "#c4c6cf",
+                "primary": "#d0bcff",
+                "on-secondary-fixed": "#191c22",
+                "on-primary-container": "#340080",
+                "on-primary": "#3c0091",
+                "primary-fixed": "#e9ddff",
+                "surface-tint": "#d0bcff",
+                "secondary-container": "#464950",
+                "secondary-fixed-dim": "#c4c6cf",
+                "tertiary-fixed": "#ffdcbb",
+                "on-primary-fixed-variant": "#5516be",
+                "on-error": "#690005",
+                "error": "#ffb4ab",
+                "on-tertiary-container": "#3f2300",
+                "background": "#0B0E14",
+                "tertiary-container": "#ca801e",
+                "surface-dim": "#15121b",
+                "surface-bright": "#3b3742",
+                "on-secondary": "#2e3037",
+                "primary-fixed-dim": "#d0bcff",
+                "outline-variant": "#494454",
+                "surface-container-lowest": "#0f0d15",
+                "primary-container": "#a078ff",
+                "inverse-primary": "#6d3bd7",
+                "on-tertiary": "#482900",
+                "on-error-container": "#ffdad6",
+                "error-container": "#93000a",
+                "secondary-fixed": "#e1e2eb",
+                "on-secondary-container": "#b6b8c1",
+                "on-primary-fixed": "#23005c",
+                "on-tertiary-fixed": "#2c1700",
+                "outline": "#958ea0",
+                "surface-container-low": "#1d1a23",
+                "tertiary": "#ffb869",
+                "on-surface": "#e7e0ed",
+                "on-tertiary-fixed-variant": "#673d00",
+                "inverse-on-surface": "#322f39",
+                "surface-container-high": "#2c2832",
+                "tertiary-fixed-dim": "#ffb869",
+                "inverse-surface": "#e7e0ed",
+                "on-background": "#e7e0ed",
+                "surface-container-highest": "#37333d",
+                "surface-variant": "#37333d",
+                "surface-container": "#211e27",
+                "on-secondary-fixed-variant": "#44474e"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "gutter": "16px",
+                "sm": "0.5rem",
+                "xl": "2.5rem",
+                "md": "1rem",
+                "margin-mobile": "16px",
+                "margin-desktop": "32px",
+                "xs": "0.25rem",
+                "lg": "1.5rem",
+                "base": "4px"
+              },
+              "fontFamily": {
+                "headline-lg": ["Geist", "sans-serif"],
+                "code": ["Geist Mono", "monospace"],
+                "body-md": ["Geist", "sans-serif"],
+                "body-lg": ["Geist", "sans-serif"],
+                "headline-lg-mobile": ["Geist", "sans-serif"],
+                "label-md": ["Geist", "sans-serif"],
+                "headline-md": ["Geist", "sans-serif"]
+              },
+              "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "code": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                "body-md": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                "body-lg": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "headline-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0B0E14;
+            color: #e7e0ed;
+            font-family: 'Geist', sans-serif;
+        }
+        
+        .font-geist {
+            font-family: 'Geist', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(33, 30, 39, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(208, 188, 255, 0.1);
+        }
+
+        .input-glass {
+            background: rgba(15, 13, 21, 0.6);
+            border: 1px solid rgba(149, 142, 160, 0.2);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .input-glass:focus {
+            border-color: #d0bcff;
+            background: rgba(208, 188, 255, 0.05);
+            box-shadow: 0 0 0 1px rgba(208, 188, 255, 0.2);
+            outline: none;
+        }
+
+        .btn-premium {
+            background: #a078ff;
+            color: #23005c;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-premium:hover {
+            box-shadow: 0 4px 16px rgba(160, 120, 255, 0.3);
+            filter: brightness(1.1);
+        }
+
+        .role-chip {
+            background: rgba(55, 51, 61, 0.4);
+            border: 1px solid rgba(149, 142, 160, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .role-chip:hover {
+            background: rgba(55, 51, 61, 0.6);
+            border-color: rgba(149, 142, 160, 0.3);
+        }
+
+        .peer:checked + .role-chip {
+            border-color: #d0bcff;
+            background: rgba(160, 120, 255, 0.15);
+            color: #d0bcff;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md selection:bg-primary/30" style="background-color: #15121b;">
+<header class="w-full py-6 px-margin-mobile md:px-margin-desktop flex justify-between items-center absolute top-0 z-50">
+<a class="text-headline-md font-bold text-primary flex items-center gap-2 group transition-all" href="/">
+<span class="material-symbols-outlined text-[28px] transition-transform group-hover:rotate-12" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<span class="tracking-tight">CoFound</span>
+</a>
+<a href="/logout" class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors font-medium text-body-md group">
+  <span class="material-symbols-outlined text-[20px]">logout</span>
+  <span class="">Logout</span>
+</a></header>
+<main class="flex-grow flex items-center justify-center py-20 px-margin-mobile md:px-gutter relative overflow-hidden" style="background-image: linear-gradient(rgba(11, 14, 20, 0.8), rgba(11, 14, 20, 0.8)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDuZu82QYkfjI8bSIb4Z0VhHsQ0pzOius6CSydF9vQaRJYzer41k7_LSH1taSpSGIq4S0UwKCaK_SkT1LD632zvJQQ72nD824iag-tJthaWfZS-NjHcIqhhr83TvDn7o-GEX2nuT7GP11z949CV6iY7uSW8PuSbUozVNdTseNGANQMCjyWG6fFsWqFtApzXHJWGz-v8_Wi_uBkeZqIhjTF2lhZUylLWvh13EywYyX5I0yno9czpgtBSWZ_GanSS13I7KubwCRorXnk'); background-size: cover; background-position: center;">
+<!-- Sophisticated Background Accents -->
+<div class="w-full max-w-2xl mt-8">
+<!-- Registration Card -->
+<div class="glass-panel rounded-xl p-8 md:p-12 shadow-2xl relative z-10" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.25) 0%, rgba(16, 185, 129, 0.15) 100%); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.1);">
+<div class="mb-10 text-center">
+<h1 class="text-headline-lg-mobile md:text-headline-lg text-on-surface mb-3 tracking-tight">Join CoFound</h1>
+<p class="text-body-lg text-on-surface-variant font-light">Connect with founders, developers, and visionaries.</p>
+</div>
+<form class="space-y-8">
+<!-- Profile Photo Upload -->
+<div class="flex flex-col items-center justify-center space-y-4 p-8 border border-dashed border-outline-variant rounded-xl hover:border-primary/40 hover:bg-surface-container-low transition-all cursor-pointer group">
+<div class="w-20 h-20 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-primary/10 transition-all shadow-inner border border-outline-variant/30">
+<span class="material-symbols-outlined text-outline text-3xl group-hover:text-primary transition-colors">add_a_photo</span>
+</div>
+<div class="text-center">
+<p class="text-body-md font-medium text-on-surface">Upload Profile Photo</p>
+<p class="text-label-md text-outline mt-1 font-medium">Powered by Cloudinary. JPG, PNG (Max 5MB)</p>
+</div>
+<input accept="image/*" class="hidden" type="file">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="text-label-md uppercase tracking-widest text-outline" for="fullName">Full Name</label>
+<input class="w-full input-glass rounded-lg px-4 py-3 text-on-surface placeholder-outline-variant" id="fullName" placeholder="Jane Doe" required="" type="text">
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="text-label-md uppercase tracking-widest text-outline" for="email">Email</label>
+<input class="w-full input-glass rounded-lg px-4 py-3 text-on-surface placeholder-outline-variant" id="email" placeholder="jane@example.com" required="" type="email">
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<label class="text-label-md uppercase tracking-widest text-outline" for="password">Password</label>
+<div class="relative">
+<input class="w-full input-glass rounded-lg px-4 py-3 text-on-surface placeholder-outline-variant pr-12" id="password" placeholder="••••••••" required="" type="password">
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface p-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Confirm Password -->
+<div class="space-y-2">
+<label class="text-label-md uppercase tracking-widest text-outline" for="confirmPassword">Confirm Password</label>
+<input class="w-full input-glass rounded-lg px-4 py-3 text-on-surface placeholder-outline-variant" id="confirmPassword" placeholder="••••••••" required="" type="password">
+</div>
+</div>
+<!-- Role Selection -->
+<div class="space-y-4">
+<label class="text-label-md uppercase tracking-widest text-outline">Primary Role</label>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+<label class="cursor-pointer relative group">
+<input class="peer sr-only" name="role" type="radio" value="Founder">
+<div class="role-chip px-4 py-3 rounded-lg text-center text-body-md font-medium text-on-surface-variant transition-all">
+                                Founder
+                            </div>
+</label>
+<label class="cursor-pointer relative group">
+<input class="peer sr-only" name="role" type="radio" value="Developer">
+<div class="role-chip px-4 py-3 rounded-lg text-center text-body-md font-medium text-on-surface-variant transition-all">
+                                Developer
+                            </div>
+</label>
+<label class="cursor-pointer relative group">
+<input class="peer sr-only" name="role" type="radio" value="Designer">
+<div class="role-chip px-4 py-3 rounded-lg text-center text-body-md font-medium text-on-surface-variant transition-all">
+                                Designer
+                            </div>
+</label>
+<label class="cursor-pointer relative group">
+<input class="peer sr-only" name="role" type="radio" value="Business">
+<div class="role-chip px-4 py-3 rounded-lg text-center text-body-md font-medium text-on-surface-variant transition-all">
+                                Business
+                            </div>
+</label>
+<label class="cursor-pointer relative group">
+<input class="peer sr-only" name="role" type="radio" value="Marketing">
+<div class="role-chip px-4 py-3 rounded-lg text-center text-body-md font-medium text-on-surface-variant transition-all">
+                                Marketing
+                            </div>
+</label>
+</div>
+</div>
+<!-- Actions -->
+<div class="pt-6 space-y-6">
+<button class="w-full btn-premium py-4 px-8 rounded-lg font-semibold text-body-md flex justify-center items-center gap-2 group" type="submit">
+                        Join CoFound
+                        <span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<div class="text-center">
+<p class="text-body-md text-on-surface-variant">
+                            Already have an account? 
+                            <a class="text-primary hover:text-primary-fixed transition-all font-medium underline decoration-primary/30 underline-offset-4 decoration-1 hover:decoration-solid" href="/login">Log in</a>
+</p>
+</div>
+</div>
+</form>
+</div>
+</div>
+</main>
+<footer class="w-full py-8 text-center text-outline text-label-md opacity-50 select-none">
+    © 2024 CoFound Platform. All rights reserved.
+</footer>
+
+
+</body></html>
