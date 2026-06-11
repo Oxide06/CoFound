@@ -1,0 +1,20 @@
+export const SKILLS = [
+  "React",
+  "Node.js",
+  "Python",
+  "Machine Learning",
+  "UI/UX Design",
+  "Marketing",
+  "Finance",
+  "Product Management",
+  "DevOps",
+  "Blockchain",
+  "Sales",
+  "Growth",
+  "Operations",
+  "Data Science",
+  "Cloud",
+  "Mobile",
+  "Cybersecurity",
+  "Fundraising"
+];

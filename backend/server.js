@@ -1,3 +1,6 @@
+const dns = require("dns");
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
 require("dotenv").config();
 
 const app = require("./src/app");
@@ -12,6 +15,6 @@ connectDB()
     });
   })
   .catch((error) => {
-    console.error("Failed to start CoFound server:", error.message);
+    console.error("Failed to start CoFound server:", error);
     process.exit(1);
   });
