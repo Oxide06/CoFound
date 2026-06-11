@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - CoFound</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#15121b",
+                        "on-surface-variant": "#cbc3d7",
+                        "secondary": "#c4c6cf",
+                        "primary": "#d0bcff",
+                        "on-secondary-fixed": "#191c22",
+                        "on-primary-container": "#340080",
+                        "on-primary": "#3c0091",
+                        "primary-fixed": "#e9ddff",
+                        "surface-tint": "#d0bcff",
+                        "secondary-container": "#464950",
+                        "secondary-fixed-dim": "#c4c6cf",
+                        "tertiary-fixed": "#ffdcbb",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#3f2300",
+                        "background": "#0B0E14",
+                        "tertiary-container": "#ca801e",
+                        "surface-dim": "#15121b",
+                        "surface-bright": "#3b3742",
+                        "on-secondary": "#2e3037",
+                        "primary-fixed-dim": "#d0bcff",
+                        "outline-variant": "#494454",
+                        "surface-container-lowest": "#0f0d15",
+                        "primary-container": "#a078ff",
+                        "inverse-primary": "#6d3bd7",
+                        "on-tertiary": "#482900",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#e1e2eb",
+                        "on-secondary-container": "#b6b8c1",
+                        "on-primary-fixed": "#23005c",
+                        "on-tertiary-fixed": "#2c1700",
+                        "outline": "#958ea0",
+                        "surface-container-low": "#1d1a23",
+                        "tertiary": "#ffb869",
+                        "on-surface": "#e7e0ed",
+                        "on-tertiary-fixed-variant": "#673d00",
+                        "inverse-on-surface": "#322f39",
+                        "surface-container-high": "#2c2832",
+                        "tertiary-fixed-dim": "#ffb869",
+                        "inverse-surface": "#e7e0ed",
+                        "on-background": "#e7e0ed",
+                        "surface-container-highest": "#37333d",
+                        "surface-variant": "#37333d",
+                        "surface-container": "#211e27",
+                        "on-secondary-fixed-variant": "#44474e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-md": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "display-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(21, 18, 27, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 25px rgba(208, 188, 255, 0.08);
+            border-color: rgba(208, 188, 255, 0.15);
+            background: rgba(33, 30, 39, 0.5);
+        }
+        .premium-gradient {
+            background: linear-gradient(135deg, #6d3bd7 0%, #d0bcff 100%);
+        }
+        .premium-gradient-hover:hover {
+            background: linear-gradient(135deg, #5516be 0%, #c9beff 100%);
+        }
+        body { font-family: 'Geist', sans-serif; }
+        .font-mono-label { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col antialiased">
+<!-- TopNavBar -->
+<nav class="bg-background/60 backdrop-blur-xl w-full top-0 sticky border-b border-white/5 shadow-sm z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-gutter">
+<a class="text-headline-md font-bold premium-gradient bg-clip-text text-transparent" href="#">CoFound</a>
+<div class="hidden md:flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md font-medium" href="#">Explore</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md font-medium" href="#">Ideas</a>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="hidden md:flex items-center gap-4">
+<!-- React Integration Logic applied to buttons -->
+<!-- logout() and isAuthenticated from useAuth, navigate to /login -->
+<button class="text-body-md font-medium text-on-surface-variant hover:text-primary transition-all px-4 py-2 hidden" id="logout-btn" onclick="handleLogout()">
+    Logout
+</button>
+<button class="text-body-md font-medium text-on-surface-variant hover:text-primary transition-all px-4 py-2" id="login-btn">
+    Login
+</button>
+<button class="premium-gradient premium-gradient-hover text-on-primary transition-all px-6 py-2 rounded-full text-body-md font-semibold" id="register-btn">
+    Register
+</button>
+</div>
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<!-- Welcome Section -->
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-gutter mb-12">
+<div class="flex items-center gap-6">
+<div class="relative">
+<div class="absolute inset-0 premium-gradient blur-md opacity-20 rounded-full scale-110"></div>
+<img alt="User profile avatar" class="w-20 h-20 rounded-full border-2 border-white/10 relative z-10 object-cover" data-alt="A professional headshot of a young male entrepreneur with a slight smile, wearing a dark turtleneck against a dark grey background. High contrast, studio lighting, modern cinematic corporate style. Deep black shadows and subtle cool highlights reflecting a tech startup aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1tRI4EhEmPzsLDm4C_9S8v613DNZOO6IUCFf1D7n80prua77mL4mQnqOB8ZqO8nOt1TQ_RhIUyxVoCdfaQ_Z1kcBzF871M20IMPNpRiTKKfPEyBiXP0t6IMkxWb1ZuqewOiHVuDpxyTreWgtuQujaI2g7DRellWkhTJVkzDg6zkEJF7KGmnqNfvxBNvzX0ICkAFiktfsc8f4FuxyJZi9kfshdxrqXsJFpX-9aTfIa3d3qUjmJJHCdyQ9g1vzK3QBNGaehlr3LwWo"/>
+</div>
+<div>
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-bold text-on-background leading-tight">Welcome back, Alex!</h1>
+<p class="text-body-lg text-on-surface-variant mt-1">Here's what's happening with your network today.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="glass-panel text-on-background hover:bg-white/5 transition-colors px-6 py-2.5 rounded-full text-body-md font-medium flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
+                Edit Profile
+            </button>
+<button class="premium-gradient premium-gradient-hover text-on-primary transition-colors px-6 py-2.5 rounded-full text-body-md font-semibold flex items-center gap-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" style="font-size: 20px;">add</span>
+                Post Idea
+            </button>
+</div>
+</header>
+<!-- Stats Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-16">
+<div class="glass-panel p-8 rounded-xl glow-hover transition-all duration-500 group">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-mono-label text-label-sm text-on-surface-variant uppercase tracking-[0.1em]">Profile Views</h3>
+<div class="w-10 h-10 rounded-full bg-secondary/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary">visibility</span>
+</div>
+</div>
+<div class="flex items-end gap-3">
+<span class="text-display-lg font-bold text-on-background">1,248</span>
+<span class="text-tertiary text-label-sm font-mono-label mb-3 flex items-center bg-tertiary/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined" style="font-size: 14px;">arrow_upward</span> 12%
+                </span>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-xl glow-hover transition-all duration-500 group">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-mono-label text-label-sm text-on-surface-variant uppercase tracking-[0.1em]">Connection Requests</h3>
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">group_add</span>
+</div>
+</div>
+<div class="flex items-end gap-3">
+<span class="text-display-lg font-bold text-on-background">34</span>
+<span class="text-tertiary text-label-sm font-mono-label mb-3 flex items-center bg-tertiary/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined" style="font-size: 14px;">arrow_upward</span> 5%
+                </span>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-xl glow-hover transition-all duration-500 group">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-mono-label text-label-sm text-on-surface-variant uppercase tracking-[0.1em]">Ideas Posted</h3>
+<div class="w-10 h-10 rounded-full bg-secondary-container/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary">lightbulb</span>
+</div>
+</div>
+<div class="flex items-end gap-3">
+<span class="text-display-lg font-bold text-on-background">3</span>
+<span class="text-on-surface-variant text-body-md mb-3 bg-white/5 px-3 py-0.5 rounded-full">Active</span>
+</div>
+</div>
+</section>
+<!-- Recent Suggestions & Quick Actions Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<!-- Suggestions List -->
+<section class="lg:col-span-2">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-headline-md font-bold text-on-background">Recent Suggestions</h2>
+<button class="text-primary hover:text-primary-fixed-dim transition-colors text-body-md font-semibold flex items-center gap-1 group">
+                    Browse Co-Founders <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" style="font-size: 20px;">arrow_forward</span>
+</button>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Founder Card 1 -->
+<div class="glass-panel p-6 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 glow-hover transition-all duration-300">
+<div class="flex items-center gap-5">
+<img alt="Sarah Jenkins" class="w-14 h-14 rounded-full object-cover ring-2 ring-white/5" data-alt="A professional headshot of a confident female tech professional looking directly at the camera. Dark moody lighting with a soft violet rim light. She wears a modern blazer. Tech startup aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6ILZCQSy7J_5pHco-fI_rXIEQbSGaMbMmFfO6scWrtcqI5fNMxFIg_b5TslOH5FkxXPdzARMJ08BnoPCxNxT5s3zZX2gQtrnbBaROIi68T7XxBBA6-vpNCksa8kIuSK1GgZ5D68sWloZ53GvFlvGXMbWYZ-4frtVRFvNqCmT0ousuZ1_DGEbdYbgVA0FwOM8N-Js2xwv0uNpMO38P0XNtgzwKhk4tPT4ViWE0_p_5KOy9cXdyxISjgczssyL_Te-yfQhIO5I-84E"/>
+<div>
+<h4 class="text-body-lg font-bold text-on-background">Sarah Jenkins</h4>
+<p class="text-body-md text-on-surface-variant">Full Stack Developer | Ex-Google</p>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-label-sm font-mono-label text-on-surface-variant">React</span>
+<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-label-sm font-mono-label text-on-surface-variant">Node.js</span>
+<button class="ml-auto sm:ml-4 text-primary bg-primary/10 hover:bg-primary/20 w-10 h-10 rounded-full transition-all flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 22px;">person_add</span>
+</button>
+</div>
+</div>
+<!-- Founder Card 2 -->
+<div class="glass-panel p-6 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 glow-hover transition-all duration-300">
+<div class="flex items-center gap-5">
+<img alt="David Chen" class="w-14 h-14 rounded-full object-cover ring-2 ring-white/5" data-alt="A professional portrait of an Asian male founder with glasses. Dark background with subtle blue geometric light patterns in the out-of-focus background. He has a thoughtful expression. Cyberpunk-lite corporate mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXtO9eevp47KXDNhBnjywCPUbQc0aLd5iA3IK0Sgwyjla8guufTUBg9Wa6q0E6dstWs_LcvZm0QixWUE8EqETZlFAinoyihaGE92aGOCcOCn-acQKngWWo5M9KYZ7IQxm-hPbkBOizUScV-dpLXmF9MBb7en9kLM6iX-a9mB3aF4yDnV1_sEUp1SQ4Uwr7J1OOMTx5ThGEC55MJSFqyuCeTLbIxUj0_Ye51h82f0shVBlvCqbdjk65BTb61TL78lSUHa7lyFlvDtI"/>
+<div>
+<h4 class="text-body-lg font-bold text-on-background">David Chen</h4>
+<p class="text-body-md text-on-surface-variant">Growth Marketing | YC Alum</p>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-label-sm font-mono-label text-on-surface-variant">GTM</span>
+<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-label-sm font-mono-label text-on-surface-variant">SEO</span>
+<button class="ml-auto sm:ml-4 text-primary bg-primary/10 hover:bg-primary/20 w-10 h-10 rounded-full transition-all flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 22px;">person_add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Activity / Updates Panel -->
+<aside class="lg:col-span-1">
+<h2 class="text-headline-md font-bold text-on-background mb-8">Quick Insights</h2>
+<div class="glass-panel p-8 rounded-xl h-full flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 premium-gradient opacity-10 blur-3xl -mr-16 -mt-16"></div>
+<p class="text-body-md text-on-surface-variant mb-8 leading-relaxed">Your profile is getting traction. Completing your venture details could increase matches by <span class="text-secondary font-semibold">40%</span>.</p>
+<div class="mb-10">
+<div class="flex justify-between items-center mb-3">
+<span class="text-label-sm font-mono-label text-on-background uppercase tracking-wider">Profile Completeness</span>
+<span class="text-label-sm font-mono-label text-secondary">80%</span>
+</div>
+<div class="w-full bg-white/5 rounded-full h-3 overflow-hidden p-0.5 border border-white/5">
+<div class="premium-gradient h-full rounded-full" style="width: 80%"></div>
+</div>
+</div>
+<div class="mt-auto">
+<button class="w-full glass-panel hover:bg-white/5 text-on-background transition-all py-3.5 rounded-lg text-body-md font-semibold flex justify-center items-center gap-2 border border-white/10">
+                        Complete Profile
+                    </button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-background border-t border-white/5 w-full mt-24">
+<div class="flex flex-col md:flex-row justify-between items-center w-full py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto gap-8">
+<div class="text-headline-md font-bold premium-gradient bg-clip-text text-transparent">CoFound</div>
+<div class="flex flex-wrap justify-center gap-gutter">
+<a class="text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">About</a>
+<a class="text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Explore</a>
+<a class="text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Post Idea</a>
+<a class="text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact</a>
+</div>
+<div class="text-body-md text-on-surface-variant/60 font-mono-label text-sm">© 2024 CoFound. All rights reserved.</div>
+</div>
+</footer>
+<!-- Authentication Logic Integration -->
+<script>
+    // This represents the integration with React Router and AuthContext
+    // In a real React app, these would be hooks like:
+    // const { logout, isAuthenticated } = useAuth();
+    // const navigate = useNavigate();
+
+    // Mocking the behavior for the HTML preview
+    const auth = {
+        isAuthenticated: true, // Assuming the user is on the Dashboard
+        logout: () => {
+            console.log("Logging out...");
+            // Logic would go here
+            return Promise.resolve();
+        }
+    };
+
+    function handleLogout() {
+        auth.logout().then(() => {
+            // navigate('/login')
+            window.location.href = '/login'; 
+        });
+    }
+
+    // Handle visibility based on isAuthenticated state
+    document.addEventListener('DOMContentLoaded', () => {
+        const logoutBtn = document.getElementById('logout-btn');
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
+
+        if (auth.isAuthenticated) {
+            logoutBtn.classList.remove('hidden');
+            loginBtn.classList.add('hidden');
+            registerBtn.classList.add('hidden');
+        } else {
+            logoutBtn.classList.add('hidden');
+            loginBtn.classList.remove('hidden');
+            registerBtn.classList.remove('hidden');
+        }
+    });
+</script>
+</body></html>

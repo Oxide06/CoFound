@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CoFound - Explore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#15121b",
+                        "on-surface-variant": "#cbc3d7",
+                        "secondary": "#c4c6cf",
+                        "primary": "#d0bcff",
+                        "on-secondary-fixed": "#191c22",
+                        "on-primary-container": "#340080",
+                        "on-primary": "#3c0091",
+                        "primary-fixed": "#e9ddff",
+                        "surface-tint": "#d0bcff",
+                        "secondary-container": "#464950",
+                        "secondary-fixed-dim": "#c4c6cf",
+                        "tertiary-fixed": "#ffdcbb",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#3f2300",
+                        "background": "#0B0E14",
+                        "tertiary-container": "#ca801e",
+                        "surface-dim": "#15121b",
+                        "surface-bright": "#3b3742",
+                        "on-secondary": "#2e3037",
+                        "primary-fixed-dim": "#d0bcff",
+                        "outline-variant": "#494454",
+                        "surface-container-lowest": "#0f0d15",
+                        "primary-container": "#a078ff",
+                        "inverse-primary": "#6d3bd7",
+                        "on-tertiary": "#482900",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#e1e2eb",
+                        "on-secondary-container": "#b6b8c1",
+                        "on-primary-fixed": "#23005c",
+                        "on-tertiary-fixed": "#2c1700",
+                        "outline": "#958ea0",
+                        "surface-container-low": "#1d1a23",
+                        "tertiary": "#ffb869",
+                        "on-surface": "#e7e0ed",
+                        "on-tertiary-fixed-variant": "#673d00",
+                        "inverse-on-surface": "#322f39",
+                        "surface-container-high": "#2c2832",
+                        "tertiary-fixed-dim": "#ffb869",
+                        "inverse-surface": "#e7e0ed",
+                        "on-background": "#e7e0ed",
+                        "surface-container-highest": "#37333d",
+                        "surface-variant": "#37333d",
+                        "surface-container": "#211e27",
+                        "on-secondary-fixed-variant": "#44474e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "sm": "0.5rem",
+                        "xl": "2.5rem",
+                        "md": "1rem",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "xs": "0.25rem",
+                        "lg": "1.5rem",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "code": ["Geist Mono"],
+                        "body-md": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-md": ["Geist"],
+                        "headline-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-md": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0B0E14;
+            color: #e7e0ed;
+            font-family: 'Geist', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(33, 30, 39, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 30px rgba(208, 188, 255, 0.1);
+            border-color: rgba(208, 188, 255, 0.2);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #d0bcff 0%, #c4c6cf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .btn-primary {
+            background: #a078ff;
+            color: #23005c;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary:hover {
+            background: #d0bcff;
+            box-shadow: 0 4px 15px rgba(160, 120, 255, 0.3);
+            transform: translateY(-1px);
+        }
+        .btn-secondary {
+            background-color: #2c2832;
+            border: 1px solid #494454;
+            color: #e7e0ed;
+            transition: all 0.2s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #37333d;
+            border-color: #958ea0;
+        }
+        .input-glass {
+            background-color: #1d1a23;
+            border: 1px solid #494454;
+            color: #e7e0ed;
+            transition: all 0.2s ease;
+        }
+        .input-glass:focus {
+            border-color: #d0bcff;
+            box-shadow: 0 0 0 2px rgba(208, 188, 255, 0.1);
+            outline: none;
+        }
+        select.input-glass {
+            background-image: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-primary/30 selection:text-primary-fixed">
+<!-- TopNavBar -->
+<nav class="bg-background/80 backdrop-blur-xl text-primary top-0 sticky border-b border-outline-variant/30 z-50 transition-all">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto h-20">
+<div class="flex items-center gap-gutter">
+<a class="text-headline-md font-bold tracking-tight text-primary hover:text-white transition-colors" href="#">CoFound</a>
+<div class="hidden md:flex items-center gap-md">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Explore</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1 font-label-md text-label-md" href="#">Ideas</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<!-- Auth Logic placeholders: only visible when !isAuthenticated -->
+<button class="hidden md:block btn-secondary px-6 py-2 rounded-lg font-label-md text-label-md" id="loginBtn">Login</button>
+<button class="btn-primary px-6 py-2 rounded-lg font-label-md text-label-md" id="registerBtn">Register</button>
+<!-- Integrated Logout Button: only visible when isAuthenticated -->
+<!-- React pseudo-code integration: 
+                     const { logout, isAuthenticated } = useAuth();
+                     const navigate = useNavigate();
+                     const handleLogout = () => { logout(); navigate('/login'); };
+                -->
+<button class="hidden md:block btn-secondary px-6 py-2 rounded-lg font-label-md text-label-md" id="logoutBtn" onclick="handleLogout()" style="display: none;">Logout</button>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto py-12 md:py-20">
+<!-- Header Section -->
+<div class="mb-16 text-center md:text-left">
+<h1 class="font-headline-lg text-[40px] md:text-headline-lg text-on-surface mb-4 leading-tight">Discover <span class="text-gradient">Founders</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Connect with visionary technical leads, marketers, and operators to build your next big venture.</p>
+</div>
+<!-- Search & Filter Bar -->
+<div class="glass-panel rounded-xl p-6 mb-16 flex flex-col md:flex-row gap-4 items-center">
+<div class="relative w-full md:w-1/3 flex-grow">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline/50">search</span>
+<input class="input-glass w-full rounded-lg pl-12 pr-4 py-4 font-body-md text-body-md placeholder:text-on-surface-variant/50" placeholder="Search by name or keyword..." type="text"/>
+</div>
+<div class="flex w-full md:w-auto gap-4">
+<div class="relative flex-grow md:w-52">
+<select class="input-glass w-full rounded-lg px-4 py-4 appearance-none font-body-md text-body-md cursor-pointer">
+<option disabled="" selected="" value="">Role</option>
+<option value="technical">Technical Co-founder</option>
+<option value="business">Business / Ops</option>
+<option value="marketing">Marketing</option>
+<option value="design">Design</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline/50 pointer-events-none">expand_more</span>
+</div>
+<div class="relative flex-grow md:w-52">
+<select class="input-glass w-full rounded-lg px-4 py-4 appearance-none font-body-md text-body-md cursor-pointer">
+<option disabled="" selected="" value="">Location</option>
+<option value="remote">Remote</option>
+<option value="sf">San Francisco, CA</option>
+<option value="nyc">New York, NY</option>
+<option value="lon">London, UK</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline/50 pointer-events-none">expand_more</span>
+</div>
+<button aria-label="More filters" class="btn-secondary rounded-lg px-5 py-4 flex items-center justify-center min-w-[56px]">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+<!-- Active Filters -->
+<div class="flex flex-wrap gap-3 mb-12 items-center">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest opacity-60">Active Filters:</span>
+<div class="bg-surface-container-high border border-outline-variant/50 rounded-full px-4 py-1.5 flex items-center gap-2 font-label-md text-label-md text-on-surface hover:bg-surface-container-highest transition-colors">
+                Technical <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-error transition-colors">close</span>
+</div>
+<div class="bg-surface-container-high border border-outline-variant/50 rounded-full px-4 py-1.5 flex items-center gap-2 font-label-md text-label-md text-on-surface hover:bg-surface-container-highest transition-colors">
+                Remote <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-error transition-colors">close</span>
+</div>
+<button class="text-primary font-label-md text-label-md hover:text-white transition-colors ml-2">Clear all</button>
+</div>
+<!-- Founder Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+<!-- Card 1 -->
+<div class="glass-panel rounded-xl p-8 glow-hover transition-all duration-500 flex flex-col h-full group border-t-2 border-primary/40">
+<div class="flex items-start justify-between mb-6">
+<div class="relative">
+<div class="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img alt="Alex Rivera" class="relative w-20 h-20 rounded-lg border border-outline-variant/30 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3n8FtjZxOrtZ60WAsOy81792TKDTz7GPAV4o-Frmc2kLXvx3Fz6aiWbc033S7d1tZs2EGk0EzKy_WTkkqi8vvDnixITc_jmau-SJ2FAxvWRbtz14qT269RD8XGNn4L3KRuxDfObr3wOSdWKVzcoMYoKucjmu6mh3AP7cATZ9nVRehBxM6h8qDGBypHtYoy6O3qi7wfdHNoU4oEbTQkE2Dzfs911fXXJfpdCnbWwCkK-cFKRejzMKNWRG9jc5l6JKTBP0tp5gOBHQ"/>
+</div>
+<button aria-label="Bookmark" class="text-outline/50 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<div class="mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface transition-colors group-hover:text-primary">Alex Rivera</h3>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider mt-1">Technical Co-founder</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80 mb-8 flex-grow">Ex-Stripe engineer looking to build the next generation of fintech infrastructure. Focus on Rust and distributed systems.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">Rust</span>
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">Fintech</span>
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">System Design</span>
+</div>
+<div class="flex items-center justify-between mt-auto pt-6 border-t border-outline-variant/20">
+<div class="flex items-center gap-2 text-on-surface-variant/60 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">location_on</span> Remote
+                    </div>
+<button class="btn-primary px-6 py-2.5 rounded-lg font-label-md text-label-md">View Profile</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel rounded-xl p-8 glow-hover transition-all duration-500 flex flex-col h-full group border-t-2 border-primary/40">
+<div class="flex items-start justify-between mb-6">
+<div class="relative">
+<div class="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img alt="Sarah Chen" class="relative w-20 h-20 rounded-lg border border-outline-variant/30 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMHg-1NmDME7uVk1HB2KADoO3VfauaXyKyfcjo_NEwD8jXUWPeBBMxcQqS0Ztjxpu36C1qfMM6kzVw_a5gGR03OZ330qD2RWz4x-adM8fYtXp_YSwpnhauK11i5_KrP41JiDSMg6NG9Y5oe1q6k7ieSzI-UI81fH2JlpWgSU4ySXwGbt86zub1WxgN4Z4S5Bf8fw5OCZ4944kkAvn_EjDnWWgujbEBant3QXR6vE6VLwq7ohLC-khUS3gBcEMRsjwJflRG3GwKM2w"/>
+</div>
+<button aria-label="Bookmark" class="text-outline/50 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<div class="mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface transition-colors group-hover:text-primary">Sarah Chen</h3>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider mt-1">Product &amp; Ops</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80 mb-8 flex-grow">Scaled two B2B SaaS startups from Seed to Series B. Passionate about AI-driven productivity tools and optimizing go-to-market strategies.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">GTM Strategy</span>
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">Product Management</span>
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">B2B SaaS</span>
+</div>
+<div class="flex items-center justify-between mt-auto pt-6 border-t border-outline-variant/20">
+<div class="flex items-center gap-2 text-on-surface-variant/60 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">location_on</span> SF / Bay Area
+                    </div>
+<button class="btn-primary px-6 py-2.5 rounded-lg font-label-md text-label-md">View Profile</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel rounded-xl p-8 glow-hover transition-all duration-500 flex flex-col h-full group border-t-2 border-primary/40">
+<div class="flex items-start justify-between mb-6">
+<div class="relative">
+<div class="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img alt="Marcus Johnson" class="relative w-20 h-20 rounded-lg border border-outline-variant/30 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQvRs_KSAr1VufFDhVyaPvrrob7AvGdblwIUnBzl7VF0RwOdUf9ou7f-LDJ5l_8bm4xfcC4xYp6qFf8jNYkWu3IqC2TX3lGEpILaO13CHIroK-m2OXE5GBGxJo_vXOTE6KTeVnflPJkgqxgC_vWkp1Tgmz8IXLUWahtNosxOzj3uezY-DfbJ8I96FG4_E-3fYUq5Pcfuc4caa4j77dOa8nMGUwnxGgIMaR_TWaqlGKm2RN0TJ-azUzsdNm6sQgTPIlh-AeakneJJA"/>
+</div>
+<button aria-label="Bookmark" class="text-outline/50 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<div class="mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface transition-colors group-hover:text-primary">Marcus Johnson</h3>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider mt-1">Lead Designer</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80 mb-8 flex-grow">Obsessed with micro-interactions and dark-mode modernism. Looking for a technical co-founder to build a new design-system-as-a-service platform.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">UI/UX</span>
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">Figma</span>
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">Frontend</span>
+</div>
+<div class="flex items-center justify-between mt-auto pt-6 border-t border-outline-variant/20">
+<div class="flex items-center gap-2 text-on-surface-variant/60 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">location_on</span> New York, NY
+                    </div>
+<button class="btn-primary px-6 py-2.5 rounded-lg font-label-md text-label-md">View Profile</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-panel rounded-xl p-8 glow-hover transition-all duration-500 flex flex-col h-full group border-t-2 border-primary/40">
+<div class="flex items-start justify-between mb-6">
+<div class="relative">
+<div class="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative w-20 h-20 rounded-lg border border-outline-variant/30 bg-surface-container-high flex items-center justify-center text-headline-md font-bold text-primary">
+                            EL
+                        </div>
+</div>
+<button aria-label="Bookmark" class="text-outline/50 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<div class="mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface transition-colors group-hover:text-primary">Elena L.</h3>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider mt-1">Growth Hacker</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80 mb-8 flex-grow">Data-driven marketer focused on organic growth and viral loops. Seeking consumer-social ventures with a unique wedge.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">Growth</span>
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">Analytics</span>
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">Social</span>
+</div>
+<div class="flex items-center justify-between mt-auto pt-6 border-t border-outline-variant/20">
+<div class="flex items-center gap-2 text-on-surface-variant/60 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">location_on</span> London, UK
+                    </div>
+<button class="btn-primary px-6 py-2.5 rounded-lg font-label-md text-label-md">View Profile</button>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="glass-panel rounded-xl p-8 glow-hover transition-all duration-500 flex flex-col h-full group border-t-2 border-primary/40">
+<div class="flex items-start justify-between mb-6">
+<div class="relative">
+<div class="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img alt="David K." class="relative w-20 h-20 rounded-lg border border-outline-variant/30 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqF8YudspI17nfdi8KUD9CEtpZRmAF9DX9wwF5srs8NUFjvJzQGXsaWXDQUhVyNXIxtcEXO1JQfLVkCZX7dT9hKpGIun5HN7bPJuo5yakI5SwvwRhkCuidPN31fZ5AQVOYRaSt3StXjDFUIyp8mJLty6x0GpWBOAv9h5tD1fghV0HjTnEL1YzQiYhOY8_vEQmbHhYKWNBg5w-6ytNPjYdBrZ4rlajBsn4e4T6A-TWe0mAGrebKA7oYXXzInDY9bNPohZkQoaxMnAU"/>
+</div>
+<button aria-label="Bookmark" class="text-outline/50 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<div class="mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface transition-colors group-hover:text-primary">David K.</h3>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider mt-1">Technical Co-founder</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80 mb-8 flex-grow">Full-stack developer with 10 years experience. Interested in healthcare tech and bringing ML models to edge devices.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">Machine Learning</span>
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">React</span>
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">HealthTech</span>
+</div>
+<div class="flex items-center justify-between mt-auto pt-6 border-t border-outline-variant/20">
+<div class="flex items-center gap-2 text-on-surface-variant/60 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">location_on</span> Remote
+                    </div>
+<button class="btn-primary px-6 py-2.5 rounded-lg font-label-md text-label-md">View Profile</button>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="glass-panel rounded-xl p-8 glow-hover transition-all duration-500 flex flex-col h-full group border-t-2 border-primary/40">
+<div class="flex items-start justify-between mb-6">
+<div class="relative">
+<div class="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img alt="Maya Patel" class="relative w-20 h-20 rounded-lg border border-outline-variant/30 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRBgqmiNoYa4LF9SFGy6QckTFKYksN0_iprdnDuYPLb_IGq7ZJGoqszvycYnLVnnsovIp4S6iF-8gea9oWoLSHAwAMrjevyAWy7Y9EEy0fS2qIGzmgWqQpJv61xgPjCiqm9rjg2Qh_5AP3by1DJXNZtMMeHSTNACkAwnx4lGYvXdDzyyHAH19eCgq1CFDH3gqSLw2l4AcK9NZpYZ1RcRCmeGTu0UPTx7FHzdoNYG861Mc6nunwzU9Xkyw0R8Jmb6VgDR6EXUUBex0"/>
+</div>
+<button aria-label="Bookmark" class="text-outline/50 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<div class="mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface transition-colors group-hover:text-primary">Maya Patel</h3>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider mt-1">Business / Ops</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80 mb-8 flex-grow">Operations specialist. Built supply chain tech for logistics giants. Looking to disrupt last-mile delivery with a strong technical partner.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">Operations</span>
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">Logistics</span>
+<span class="bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg px-3 py-1 font-label-md text-label-md">Strategy</span>
+</div>
+<div class="flex items-center justify-between mt-auto pt-6 border-t border-outline-variant/20">
+<div class="flex items-center gap-2 text-on-surface-variant/60 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">location_on</span> Austin, TX
+                    </div>
+<button class="btn-primary px-6 py-2.5 rounded-lg font-label-md text-label-md">View Profile</button>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="flex justify-center mt-8">
+<button class="btn-secondary rounded-full px-10 py-4 font-label-md text-label-md flex items-center gap-3 group transition-all">
+                Load More Founders
+                <span class="material-symbols-outlined group-hover:translate-y-1 transition-transform">keyboard_arrow_down</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-outline-variant/20 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full py-12 px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<div class="mb-8 md:mb-0 text-headline-md font-bold tracking-tight text-white">
+                CoFound
+            </div>
+<div class="flex flex-wrap justify-center gap-8 mb-8 md:mb-0">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="font-label-md text-label-md text-primary transition-colors" href="#">Explore</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Post Idea</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="font-body-md text-[14px] text-on-surface-variant opacity-60">
+                © 2024 CoFound. All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+        /**
+         * Integration Script for React context logic.
+         * In a real React app, these would be imports from hooks/context.
+         */
+        
+        // Mock state for demonstration purposes in static HTML
+        let isAuthenticated = true; // Set to true to show logout by default per request
+        
+        const logout = () => {
+            console.log("User logged out");
+            isAuthenticated = false;
+            updateAuthUI();
+        };
+
+        const navigate = (path) => {
+            console.log(`Navigating to: ${path}`);
+            // In a real app: window.location.href = path; 
+        };
+
+        const handleLogout = () => {
+            logout();
+            navigate('/login');
+        };
+
+        const updateAuthUI = () => {
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            if (isAuthenticated) {
+                if(loginBtn) loginBtn.style.display = 'none';
+                if(registerBtn) registerBtn.style.display = 'none';
+                if(logoutBtn) logoutBtn.style.display = 'block';
+            } else {
+                if(loginBtn) loginBtn.style.display = 'block';
+                if(registerBtn) registerBtn.style.display = 'block';
+                if(logoutBtn) logoutBtn.style.display = 'none';
+            }
+        };
+
+        // Initialize UI
+        window.addEventListener('DOMContentLoaded', updateAuthUI);
+    </script>
+</body></html>

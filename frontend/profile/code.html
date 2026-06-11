@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CoFound - Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/geist" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#15121b",
+                        "on-surface-variant": "#cbc3d7",
+                        "secondary": "#c4c6cf",
+                        "primary": "#d0bcff",
+                        "on-secondary-fixed": "#191c22",
+                        "on-primary-container": "#340080",
+                        "on-primary": "#3c0091",
+                        "primary-fixed": "#e9ddff",
+                        "surface-tint": "#d0bcff",
+                        "secondary-container": "#464950",
+                        "secondary-fixed-dim": "#c4c6cf",
+                        "tertiary-fixed": "#ffdcbb",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#3f2300",
+                        "background": "#15121b",
+                        "tertiary-container": "#ca801e",
+                        "surface-dim": "#15121b",
+                        "surface-bright": "#3b3742",
+                        "on-secondary": "#2e3037",
+                        "primary-fixed-dim": "#d0bcff",
+                        "outline-variant": "#494454",
+                        "surface-container-lowest": "#0f0d15",
+                        "primary-container": "#a078ff",
+                        "inverse-primary": "#6d3bd7",
+                        "on-tertiary": "#482900",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#e1e2eb",
+                        "on-secondary-container": "#b6b8c1",
+                        "on-primary-fixed": "#23005c",
+                        "on-tertiary-fixed": "#2c1700",
+                        "outline": "#958ea0",
+                        "surface-container-low": "#1d1a23",
+                        "tertiary": "#ffb869",
+                        "on-surface": "#e7e0ed",
+                        "on-tertiary-fixed-variant": "#673d00",
+                        "inverse-on-surface": "#322f39",
+                        "surface-container-high": "#2c2832",
+                        "tertiary-fixed-dim": "#ffb869",
+                        "inverse-surface": "#e7e0ed",
+                        "on-background": "#e7e0ed",
+                        "surface-container-highest": "#37333d",
+                        "surface-variant": "#37333d",
+                        "surface-container": "#211e27",
+                        "on-secondary-fixed-variant": "#44474e",
+                        // Custom Navy Theme Colors
+                        "navy-bg": "#0B0E14",
+                        "navy-surface": "#151921",
+                        "navy-surface-high": "#1E242D"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "sm": "0.5rem",
+                        "xl": "2.5rem",
+                        "md": "1rem",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "xs": "0.25rem",
+                        "lg": "1.5rem",
+                        "base": "4px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "code": ["Geist Mono"],
+                        "body-md": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-md": ["Geist"],
+                        "headline-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-md": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(30, 36, 45, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #a078ff 0%, #6d3bd7 100%);
+            color: #ffffff;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 25px rgba(160, 120, 255, 0.4);
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e7e0ed;
+            transition: all 0.2s ease-in-out;
+        }
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+        body {
+            font-family: 'Geist', sans-serif;
+            background-color: #0B0E14;
+        }
+    </style>
+</head>
+<body class="bg-navy-bg text-on-background min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<header class="bg-navy-bg/80 backdrop-blur-xl sticky top-0 border-b border-white/5 z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-10">
+<a class="text-headline-md font-bold text-primary tracking-tighter" href="#">CoFound</a>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-medium text-sm" href="#">Explore</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-medium text-sm" href="#">Ideas</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<!-- 
+    NOTE: Integration with React components and AuthContext 
+    The logic below represents how the component would render in a real React environment.
+    We are implementing the requested conditional logic and function mapping.
+-->
+<script type="text/javascript">
+    // Mock integration logic for visualization of React-like behavior
+    // In actual implementation, these would come from useAuth() and useNavigate()
+    function handleLogout() {
+        console.log("Calling logout() from AuthContext");
+        // logout(); 
+        console.log("Navigating to /login");
+        // navigate('/login');
+        window.location.href = '/login';
+    }
+</script>
+<!-- If !isAuthenticated -->
+<a class="hidden md:block text-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="/login">Login</a>
+<a class="btn-primary px-6 py-2.5 rounded-full text-sm font-semibold" href="/register">Register</a>
+<!-- If isAuthenticated (Logout is only visible when authenticated) -->
+<button class="hidden md:block text-sm font-medium text-on-surface-variant hover:text-error transition-colors cursor-pointer" onclick="handleLogout()">Logout</button>
+<div class="w-10 h-10 rounded-full bg-navy-surface overflow-hidden border border-white/10 ml-2 ring-2 ring-primary/20">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtULyn433fwd5UZaMo3uzj-DORh7RzRRQMwQ648n03B_eVFwAmRF-b5sGpca-bXHG2St5peVKeqmrMXTPoXdghh0vpggR22P406hj-rvi3_1uM32uLDwVtUc96FSZ3QyCtQjkfJstyPd37MHn-6I4f62AOBx7xylzxQSb2WGLs8ZEWBk02fKEmeJWjNNl25tMTSVYaMdmamH7bJooMknYBus7cp0wnYtf7e1lwnnnW5Dyk5XOPW-bhK9Ju030mfQI6jEyXuD59xNw"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16 flex flex-col gap-12 md:gap-16">
+<!-- Hero Profile Section -->
+<section class="glass-panel rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row gap-10 md:gap-14 items-start relative overflow-hidden group">
+<!-- Background Glow Decor -->
+<div class="absolute -top-32 -right-32 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none group-hover:bg-primary/10 transition-colors duration-700"></div>
+<div class="absolute -bottom-32 -left-32 w-96 h-96 bg-secondary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- Avatar -->
+<div class="flex-shrink-0 relative">
+<div class="w-40 h-40 md:w-48 md:h-48 rounded-3xl border border-white/10 overflow-hidden shadow-2xl relative z-10 bg-navy-surface">
+<img alt="Alex Chen Profile" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXowqD0p4OeaIomevuse279rGJlt5Q2yF3vXTtcCf8r4Y5VYzshUZYlNDPoSRLVj5G9OUG3R4ZU4Z4Hvzy7PCGTIhS0d93EOotazZr6o9FcnKAq2W9Ij0-eeWRHjZiRmsfyRWGG3GLTRjSGwjA05x3Zy4N7IcwX5sZ6SoMPYVRy0c-2nyU-_jIJXlTW2prEM5-Y5OBGB8Hj-M6MwqcuoBw0jt1X0C0ZmhZPbhsblE9LRkrnpfyxA5dNN2WUAnqrUpQv_hFxobh-pA"/>
+</div>
+<div class="absolute -bottom-3 -right-3 bg-primary border border-white/20 rounded-xl p-2.5 z-20 flex items-center justify-center shadow-2xl" title="Verified Profile">
+<span class="material-symbols-outlined text-on-primary-container text-xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<!-- Profile Info -->
+<div class="flex-grow flex flex-col gap-6 relative z-10 w-full">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
+<div>
+<h1 class="text-4xl md:text-5xl font-bold text-on-surface tracking-tight mb-4">Alex Chen</h1>
+<div class="flex flex-wrap items-center gap-4 font-medium text-on-surface-variant">
+<span class="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-primary text-sm">terminal</span>
+                            Full-Stack Developer
+                        </span>
+<span class="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            San Francisco, CA
+                        </span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="btn-secondary px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">share</span>
+                        Share
+                    </button>
+<button class="btn-primary px-8 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">handshake</span>
+                        Connect
+                    </button>
+</div>
+</div>
+<div class="text-lg text-on-surface-variant/80 max-w-3xl leading-relaxed font-normal">
+                Building scalable, high-performance systems for early-stage startups. Passionate about <span class="text-primary font-medium">Web3 infra</span> and <span class="text-primary font-medium">decentralized AI</span>. Looking for a visionary product co-founder to tackle enterprise data orchestration problems. Previously lead engineer at DataFlow (acquired).
+            </div>
+<!-- Social Links -->
+<div class="flex items-center gap-6 mt-2">
+<a aria-label="LinkedIn" class="text-on-surface-variant hover:text-primary transition-all hover:scale-110" href="#">
+<svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+<a aria-label="GitHub" class="text-on-surface-variant hover:text-white transition-all hover:scale-110" href="#">
+<svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+<a aria-label="Personal Website" class="text-on-surface-variant hover:text-secondary transition-all hover:scale-110" href="#">
+<span class="material-symbols-outlined text-2xl">language</span>
+</a>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Details & Skills -->
+<aside class="lg:col-span-4 flex flex-col gap-10">
+<!-- Skills Panel -->
+<div class="glass-panel rounded-3xl p-8 flex flex-col gap-6">
+<h2 class="text-xl font-bold text-on-surface flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">bolt</span>
+                    Core Skills
+                </h2>
+<div class="flex flex-wrap gap-2.5">
+<span class="px-4 py-1.5 rounded-full bg-navy-surface-high border border-white/5 font-label-md text-xs text-on-surface-variant hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all cursor-default">React / Next.js</span>
+<span class="px-4 py-1.5 rounded-full bg-navy-surface-high border border-white/5 font-label-md text-xs text-on-surface-variant hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all cursor-default">Node.js</span>
+<span class="px-4 py-1.5 rounded-full bg-navy-surface-high border border-white/5 font-label-md text-xs text-on-surface-variant hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all cursor-default">PostgreSQL</span>
+<span class="px-4 py-1.5 rounded-full bg-navy-surface-high border border-white/5 font-label-md text-xs text-on-surface-variant hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all cursor-default">System Architecture</span>
+<span class="px-4 py-1.5 rounded-full bg-navy-surface-high border border-white/5 font-label-md text-xs text-on-surface-variant hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all cursor-default">AWS</span>
+<span class="px-4 py-1.5 rounded-full bg-navy-surface-high border border-white/5 font-label-md text-xs text-on-surface-variant hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all cursor-default">GraphQL</span>
+</div>
+</div>
+<!-- Profile Completion -->
+<div class="glass-panel rounded-3xl p-8 flex flex-col gap-5">
+<div class="flex justify-between items-center">
+<h3 class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Profile Strength</h3>
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-0.5 rounded">85%</span>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<span class="text-sm font-semibold text-on-surface">Advanced</span>
+</div>
+<div class="w-full bg-white/5 rounded-full h-2 overflow-hidden">
+<div class="btn-primary h-full rounded-full w-[85%] relative overflow-hidden">
+<div class="absolute inset-0 bg-white/10 animate-pulse"></div>
+</div>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant/60 leading-relaxed">Your profile is more visible to potential co-founders. Add a portfolio link to reach 100%.</p>
+</div>
+</aside>
+<!-- Right Column: Ideas -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<div class="flex justify-between items-center border-b border-white/5 pb-6">
+<h2 class="text-2xl font-bold text-on-surface tracking-tight">Startup Ideas</h2>
+<button class="btn-secondary px-5 py-2.5 rounded-full text-xs font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">add</span>
+                    Post Idea
+                </button>
+</div>
+<div class="flex flex-col gap-6">
+<!-- Idea Card 1 -->
+<div class="glass-panel rounded-[2rem] p-8 group hover:border-primary/30 transition-all duration-500 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-6 relative z-10">
+<div>
+<h3 class="text-2xl font-bold text-on-surface group-hover:text-primary transition-colors duration-300">Decentralized Data Marketplace</h3>
+<div class="mt-3 flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-md bg-tertiary/10 text-tertiary border border-tertiary/20 text-[10px] font-bold uppercase tracking-widest">Seeking Co-Founder</span>
+</div>
+</div>
+</div>
+<p class="text-on-surface-variant/80 leading-relaxed mb-8 relative z-10 max-w-2xl">
+                        A protocol that allows IoT device owners to securely monetize their real-time sensor data streams without centralized intermediaries, utilizing zero-knowledge proofs for data verification.
+                    </p>
+<div class="flex flex-wrap justify-between items-center pt-6 border-t border-white/5 gap-4 relative z-10">
+<div class="flex gap-3">
+<span class="text-[10px] font-bold text-on-surface-variant bg-navy-surface-high border border-white/5 px-3 py-1.5 rounded-full">Web3</span>
+<span class="text-[10px] font-bold text-on-surface-variant bg-navy-surface-high border border-white/5 px-3 py-1.5 rounded-full">IoT</span>
+</div>
+<button class="text-primary hover:text-white transition-all font-bold text-sm flex items-center gap-2 group/btn">
+                            View Details 
+                            <span class="material-symbols-outlined text-xl group-hover/btn:translate-x-2 transition-transform duration-300">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Idea Card 2 -->
+<div class="glass-panel rounded-[2rem] p-8 group hover:border-primary/30 transition-all duration-500 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-6 relative z-10">
+<div>
+<h3 class="text-2xl font-bold text-on-surface group-hover:text-primary transition-colors duration-300">AI-Driven API Orchestrator</h3>
+<div class="mt-3 flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-md bg-white/5 text-on-surface-variant border border-white/10 text-[10px] font-bold uppercase tracking-widest">Validating</span>
+</div>
+</div>
+</div>
+<p class="text-on-surface-variant/80 leading-relaxed mb-8 relative z-10 max-w-2xl">
+                        An enterprise tool that automatically generates, tests, and maintains integration code between disparate SaaS platforms by analyzing API documentation using LLMs.
+                    </p>
+<div class="flex flex-wrap justify-between items-center pt-6 border-t border-white/5 gap-4 relative z-10">
+<div class="flex gap-3">
+<span class="text-[10px] font-bold text-on-surface-variant bg-navy-surface-high border border-white/5 px-3 py-1.5 rounded-full">AI/ML</span>
+<span class="text-[10px] font-bold text-on-surface-variant bg-navy-surface-high border border-white/5 px-3 py-1.5 rounded-full">DevTools</span>
+</div>
+<button class="text-primary hover:text-white transition-all font-bold text-sm flex items-center gap-2 group/btn">
+                            View Details 
+                            <span class="material-symbols-outlined text-xl group-hover/btn:translate-x-2 transition-transform duration-300">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-navy-bg border-t border-white/5 mt-20">
+<div class="flex flex-col md:flex-row justify-between items-center w-full py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto gap-10 md:gap-0">
+<div class="text-2xl font-bold text-primary tracking-tighter">CoFound</div>
+<nav class="flex flex-wrap justify-center gap-10">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-semibold text-[10px] tracking-widest uppercase" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-semibold text-[10px] tracking-widest uppercase" href="#">Explore</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-semibold text-[10px] tracking-widest uppercase" href="#">Post Idea</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-semibold text-[10px] tracking-widest uppercase" href="#">Contact</a>
+</nav>
+<div class="text-[10px] font-medium text-on-surface-variant/40 uppercase tracking-wider">
+            © 2024 CoFound. Crafted for visionaries.
+        </div>
+</div>
+</footer>
+</body></html>
