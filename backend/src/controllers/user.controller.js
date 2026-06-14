@@ -3,6 +3,8 @@ const ApiError = require("../utils/ApiError");
 const asyncHandler = require("../utils/asyncHandler");
 const parseList = require("../utils/parseList");
 const User = require("../models/User.model");
+const Idea = require("../models/Idea.model");
+const Connection = require("../models/Connection.model");
 const { cloudinary } = require("../config/cloudinary");
 
 const ALLOWED_UPDATE_FIELDS = [
@@ -12,7 +14,11 @@ const ALLOWED_UPDATE_FIELDS = [
   "skills",
   "location",
   "linkedinUrl",
-  "githubUrl"
+  "githubUrl",
+  "portfolioUrl",
+  "headline",
+  "experienceLevel",
+  "availability"
 ];
 
 const buildAvatar = (file) => ({
@@ -21,7 +27,20 @@ const buildAvatar = (file) => ({
 });
 
 const getMe = asyncHandler(async (req, res) => {
-  const response = new ApiResponse(200, { user: req.user }, "Profile fetched");
+  const userId = req.user._id;
+  const [ideasCount, connectionsCount] = await Promise.all([
+    Idea.countDocuments({ founder: userId }),
+    Connection.countDocuments({
+      $or: [{ sender: userId }, { receiver: userId }],
+      status: "accepted"
+    })
+  ]);
+
+  const userObj = req.user.toObject();
+  userObj.ideasCount = ideasCount;
+  userObj.connectionsCount = connectionsCount;
+
+  const response = new ApiResponse(200, { user: userObj }, "Profile fetched");
   res.status(200).json(response);
 });
 
@@ -47,7 +66,19 @@ const updateMe = asyncHandler(async (req, res) => {
     runValidators: true
   }).select("-password");
 
-  const response = new ApiResponse(200, { user }, "Profile updated");
+  const [ideasCount, connectionsCount] = await Promise.all([
+    Idea.countDocuments({ founder: user._id }),
+    Connection.countDocuments({
+      $or: [{ sender: user._id }, { receiver: user._id }],
+      status: "accepted"
+    })
+  ]);
+
+  const userObj = user.toObject();
+  userObj.ideasCount = ideasCount;
+  userObj.connectionsCount = connectionsCount;
+
+  const response = new ApiResponse(200, { user: userObj }, "Profile updated");
   res.status(200).json(response);
 });
 
@@ -62,7 +93,19 @@ const getUserByUsername = asyncHandler(async (req, res) => {
     throw new ApiError(404, "User not found");
   }
 
-  const response = new ApiResponse(200, { user }, "User found");
+  const [ideasCount, connectionsCount] = await Promise.all([
+    Idea.countDocuments({ founder: user._id }),
+    Connection.countDocuments({
+      $or: [{ sender: user._id }, { receiver: user._id }],
+      status: "accepted"
+    })
+  ]);
+
+  const userObj = user.toObject();
+  userObj.ideasCount = ideasCount;
+  userObj.connectionsCount = connectionsCount;
+
+  const response = new ApiResponse(200, { user: userObj }, "User found");
   res.status(200).json(response);
 });
 
@@ -82,10 +125,26 @@ const getAllUsers = asyncHandler(async (req, res) => {
     User.countDocuments(filter)
   ]);
 
+  const usersWithCounts = await Promise.all(
+    users.map(async (u) => {
+      const [ideasCount, connectionsCount] = await Promise.all([
+        Idea.countDocuments({ founder: u._id }),
+        Connection.countDocuments({
+          $or: [{ sender: u._id }, { receiver: u._id }],
+          status: "accepted"
+        })
+      ]);
+      const userObj = u.toObject();
+      userObj.ideasCount = ideasCount;
+      userObj.connectionsCount = connectionsCount;
+      return userObj;
+    })
+  );
+
   const response = new ApiResponse(
     200,
     {
-      users,
+      users: usersWithCounts,
       total,
       page,
       totalPages: Math.ceil(total / limit)

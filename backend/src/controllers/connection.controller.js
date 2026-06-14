@@ -19,8 +19,10 @@ const sendRequest = asyncHandler(async (req, res) => {
   }
 
   const existingConnection = await Connection.findOne({
-    sender: req.user._id,
-    receiver: receiverId
+    $or: [
+      { sender: req.user._id, receiver: receiverId },
+      { sender: receiverId, receiver: req.user._id }
+    ]
   });
 
   if (existingConnection) {

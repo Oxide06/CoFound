@@ -12,6 +12,9 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [unverified, setUnverified] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+  
   const {
     register,
     handleSubmit,
@@ -20,26 +23,42 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     setLoading(true);
+    setUnverified(false);
+    setUserEmail(data.email);
     try {
       await login(data);
       toast.success("Logged in successfully");
       navigate("/dashboard");
     } catch (error) {
-      toast.error(error.response?.data?.message || "Login failed");
+      const errMsg = error.response?.data?.message || "Login failed";
+      toast.error(errMsg);
+      if (errMsg.toLowerCase().includes("verify")) {
+        setUnverified(true);
+      }
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <main className="page-shell grid min-h-screen place-items-center px-4 py-10">
-      <div className="glass-panel w-full max-w-md rounded-2xl p-8">
-        <Link to="/" className="mb-8 inline-flex font-display text-2xl font-bold text-primary-soft">
+    <main className="page-shell grid min-h-screen place-items-center px-4 py-8 bg-background">
+      <div className="glass-panel w-full max-w-md rounded-xl p-6 border border-border bg-surface">
+        <Link to="/" className="mb-4 inline-flex font-display text-lg font-bold text-primary">
           CoFound
         </Link>
-        <h1 className="font-display text-3xl font-semibold">Welcome Back</h1>
-        <p className="mt-2 text-text-muted">Sign in to continue to CoFound.</p>
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5">
+        <h1 className="font-display text-lg font-semibold text-text-primary">Welcome Back</h1>
+        <p className="text-xs text-text-muted">Sign in to continue to CoFound.</p>
+        
+        {unverified && (
+          <div className="mt-4 p-3 rounded-lg border border-primary/20 bg-primary/5 text-xs text-text-primary">
+            Please verify your email address. Need a verification link?{" "}
+            <Link to={`/verify-email?email=${encodeURIComponent(userEmail)}`} className="text-primary font-semibold hover:underline">
+              Verify Account
+            </Link>
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-5 space-y-4">
           <Input
             label="Email"
             type="email"
@@ -47,27 +66,35 @@ export default function Login() {
             error={errors.email?.message}
             register={register("email", { ...required("Email"), pattern: emailPattern })}
           />
-          <Input
-            label="Password"
-            type="password"
-            placeholder="••••••••"
-            error={errors.password?.message}
-            register={register("password", { ...required("Password"), ...minLength(6) })}
-          />
-          <Button type="submit" fullWidth size="lg" loading={loading}>
-            Login <ArrowRight size={18} />
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="label-caps">Password</span>
+              <Link to="/forgot-password" className="text-[10px] font-semibold text-primary hover:underline">
+                Forgot Password?
+              </Link>
+            </div>
+            <input
+              type="password"
+              placeholder="••••••••"
+              className={`w-full rounded-lg border border-border bg-surface px-3 py-2 text-xs text-text-primary outline-none transition placeholder:text-text-muted focus:border-primary focus:ring-1 focus:ring-primary/20`}
+              {...register("password", { ...required("Password"), ...minLength(6) })}
+            />
+            {errors.password?.message && (
+              <span className="text-[11px] text-error mt-1 block">{errors.password.message}</span>
+            )}
+          </div>
+          
+          <Button type="submit" fullWidth loading={loading}>
+            Login <ArrowRight size={14} />
           </Button>
         </form>
-        <p className="mt-6 text-center text-sm text-text-muted">
-          <Mail className="mr-1 inline" size={14} />
+        
+        <p className="mt-5 text-center text-xs text-text-muted">
+          <Mail className="mr-1 inline" size={12} />
           No account yet?{" "}
-          <Link to="/register" className="text-primary-soft">
+          <Link to="/register" className="text-primary font-semibold hover:underline">
             Register
           </Link>
-        </p>
-        <p className="mt-2 text-center text-xs text-text-muted">
-          <Lock className="mr-1 inline" size={12} />
-          Protected by secure token authentication.
         </p>
       </div>
     </main>

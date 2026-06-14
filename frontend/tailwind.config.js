@@ -5,16 +5,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#6C47FF",
-        "primary-soft": "#D0BCFF",
-        secondary: "#0EA5E9",
-        background: "#0F0F13",
-        surface: "#1A1A24",
-        "surface-high": "#211E27",
-        "text-primary": "#F1F0FF",
-        "text-muted": "#7B7A8E",
-        success: "#22C55E",
-        error: "#EF4444",
+        primary: "var(--color-primary)",
+        "primary-soft": "var(--color-primary-soft)",
+        secondary: "var(--color-secondary)",
+        background: "var(--color-background)",
+        surface: "var(--color-surface)",
+        "surface-high": "var(--color-surface-high)",
+        "text-primary": "var(--color-text-primary)",
+        "text-muted": "var(--color-text-muted)",
+        border: "var(--color-border)",
+        success: "var(--color-success)",
+        error: "var(--color-error)",
         amber: "#FFB869"
       },
       fontFamily: {
@@ -23,14 +24,14 @@ export default {
         mono: ["JetBrains Mono", "monospace"]
       },
       borderRadius: {
-        xl: "0.75rem",
-        "2xl": "1rem"
+        xl: "0.5rem",
+        "2xl": "0.75rem"
       },
       spacing: {
         "container-x": "clamp(1rem, 4vw, 4rem)"
       },
       boxShadow: {
-        glow: "0 0 30px rgba(108, 71, 255, 0.22)"
+        glow: "0 0 30px rgba(108, 71, 255, 0.15)"
       }
     }
   },

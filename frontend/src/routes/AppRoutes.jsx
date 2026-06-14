@@ -11,6 +11,9 @@ import Explore from "@/pages/Explore";
 import StartupIdea from "@/pages/StartupIdea";
 import PostIdea from "@/pages/PostIdea";
 import Connections from "@/pages/Connections";
+import VerifyEmail from "@/pages/VerifyEmail";
+import ForgotPassword from "@/pages/ForgotPassword";
+import ResetPassword from "@/pages/ResetPassword";
 import NotFound from "@/pages/NotFound";
 
 export default function AppRoutes() {
@@ -22,6 +25,9 @@ export default function AppRoutes() {
       <Route element={<PublicRoute />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Route>
       <Route element={<ProtectedRoute />}>
         <Route path="/dashboard" element={<Dashboard />} />
