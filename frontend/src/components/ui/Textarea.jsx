@@ -1,13 +1,13 @@
 export default function Textarea({ label, error, register, className = "", ...props }) {
   return (
-    <label className="block space-y-2">
+    <label className="block space-y-1.5">
       {label && <span className="label-caps">{label}</span>}
       <textarea
-        className={`min-h-32 w-full resize-y rounded-xl border border-white/10 bg-surface/80 px-4 py-3 text-text-primary outline-none transition placeholder:text-text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 ${className}`}
+        className={`min-h-24 w-full resize-y rounded-lg border border-border bg-surface px-3 py-2 text-xs text-text-primary outline-none transition placeholder:text-text-muted focus:border-primary focus:ring-1 focus:ring-primary/20 ${className}`}
         {...register}
         {...props}
       />
-      {error && <span className="text-sm text-error">{error}</span>}
+      {error && <span className="text-[11px] text-error">{error}</span>}
     </label>
   );
 }

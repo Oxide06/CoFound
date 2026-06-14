@@ -48,6 +48,7 @@ const getAllIdeas = asyncHandler(async (req, res) => {
   const filter = {};
 
   if (req.query.stage) filter.stage = req.query.stage;
+  if (req.query.founder) filter.founder = req.query.founder;
   if (req.query.skillsNeeded) filter.skillsNeeded = { $in: parseList(req.query.skillsNeeded) };
   if (req.query.search) {
     filter.$or = [

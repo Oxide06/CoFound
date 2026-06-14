@@ -53,10 +53,36 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: ""
     },
+    portfolioUrl: {
+      type: String,
+      default: ""
+    },
+    headline: {
+      type: String,
+      default: ""
+    },
+    experienceLevel: {
+      type: String,
+      enum: ["Junior", "Mid", "Senior", "Lead"],
+      default: "Mid"
+    },
+    availability: {
+      type: String,
+      enum: ["Full-time", "Part-time", "Contract", "Not Available"],
+      default: "Full-time"
+    },
     profileViews: {
       type: Number,
       default: 0
-    }
+    },
+    isVerified: {
+      type: Boolean,
+      default: false
+    },
+    verificationToken: String,
+    verificationTokenExpires: Date,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
   },
   { timestamps: true }
 );

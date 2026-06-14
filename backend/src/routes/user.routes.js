@@ -35,7 +35,11 @@ router.patch(
     body("bio").optional().isLength({ max: 500 }).withMessage("Bio cannot exceed 500 characters"),
     body("role").optional().isIn(USER_ROLES).withMessage("Invalid role"),
     body("linkedinUrl").optional({ checkFalsy: true }).isURL().withMessage("Invalid LinkedIn URL"),
-    body("githubUrl").optional({ checkFalsy: true }).isURL().withMessage("Invalid GitHub URL")
+    body("githubUrl").optional({ checkFalsy: true }).isURL().withMessage("Invalid GitHub URL"),
+    body("portfolioUrl").optional({ checkFalsy: true }).isURL().withMessage("Invalid Portfolio URL"),
+    body("headline").optional().trim(),
+    body("experienceLevel").optional().isIn(["Junior", "Mid", "Senior", "Lead"]).withMessage("Invalid experience level"),
+    body("availability").optional().isIn(["Full-time", "Part-time", "Contract", "Not Available"]).withMessage("Invalid availability status")
   ],
   validate,
   updateMe

@@ -1,6 +1,10 @@
 export const AUTH = {
   REGISTER: "/auth/register",
-  LOGIN: "/auth/login"
+  LOGIN: "/auth/login",
+  VERIFY_EMAIL: "/auth/verify-email",
+  RESEND_VERIFICATION: "/auth/resend-verification",
+  FORGOT_PASSWORD: "/auth/forgot-password",
+  RESET_PASSWORD: "/auth/reset-password"
 };
 
 export const USERS = {
